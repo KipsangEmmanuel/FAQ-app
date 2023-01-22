@@ -1,25 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
-
-function App() {
+import React from "react";
+import questions from "./Faq.json";
+import Banner from "./Banner";
+export function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Banner>
+      <Banner.Header>Frequently Asked Questions</Banner.Header>
+      {questions.map((question) => (
+        <Banner.Entity key={question.id}>
+          <Banner.Question>{question.question}</Banner.Question>
+          <Banner.Text>{question.answers}</Banner.Text>
+        </Banner.Entity>
+      ))}
+      <h4>
+        Question not on the list? Contact out help desk for further enquiries
+      </h4>
+    </Banner>
   );
 }
-
-export default App;
